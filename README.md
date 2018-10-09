@@ -1,21 +1,38 @@
 
 # Генератор тестов для конечных автоматов
 Данный репозиторий содержит пакет программ, позволяющих строить whitebox/blackbox проверяющий тест для конечных автоматов.
-Whitebox: на основе мутационного автомата.
-Blackbox: HSI метод и метод обхода графа переходов.
+- Whitebox: на основе мутационного автомата.
+- Blackbox: HSI метод и метод обхода графа переходов.
 
 ## Параметры командной строки
 
 test.exe [-h] [-i INPUT_FSM] [-o OUTPUT_TEST] [-m MODEL_TYPE] [-mt METHOD]
 
 параметры:
-| параметр       | описание                                                        |
-|----------------|-----------------------------------------------------------------|
-| -h, --help     | выводит справку                                                 |
-| -i INPUT_FSM   | путь к входному файлу конечного автомата                        |
-| -o OUTPUT_TEST | путь к выходному файлу, содержащему тестовые последовательности |
-| -m MODEL_TYPE  | Модель построения теста: black_box/white_box                    |
-| -mt METHOD     | Метод генерации теста для модели black_box: transition_tour/hsi |
+<table class="tg">
+  <col width="45%">
+  <col width="65%">
+  <tr>
+    <td>-h, --help</td>
+    <td> выводит справку</td>
+  </tr>
+  <tr>
+    <td>-i INPUT_FSM</td>
+    <td>путь к входному файлу конечного автомата </td>
+  </tr>
+  <tr>
+    <td>-o OUTPUT_TEST</td>
+    <td>путь к выходному файлу, содержащему тестовые последовательности</td>
+  </tr>
+  <tr>
+    <td>-m MODEL_TYPE</td>
+    <td>модель построения теста: black_box/white_box</td>
+  </tr>
+  <tr>
+    <td>-mt METHOD</td>
+    <td>метод генерации теста для модели black_box: transition_tour/hsi</td>
+  </tr>
+</table>
 
 ## Пример
 **test.fsm**
@@ -35,10 +52,11 @@ DISCONNECT INPUT-1 CONNECT OUTPUT-1
 DISCONNECT INPUT-2 END OUTPUT-1
 ```
 
+Командная строка
 
-> test.exe -i test.fsm -o 0.seq -m white_box
-test.exe -i test.fsm -o 0.seq -m black_box -mt transition_tour
-test.exe -i test.fsm -o 0.seq -m black_box -mt hsi
+    $ test.exe -i test.fsm -o 0.seq -m white_box
+    $ test.exe -i test.fsm -o 0.seq -m black_box -mt transition_tour
+    $ test.exe -i test.fsm -o 0.seq -m black_box -mt hsi
 
 ## Формат файла конечный автомат
     F <тип, равно 0>
